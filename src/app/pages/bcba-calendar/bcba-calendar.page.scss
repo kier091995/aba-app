@@ -1,0 +1,102 @@
+@font-face {
+	font-family: 'Poetsen One';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(/assets/fonts/PoetsenOne-Regular.ttf);
+}
+
+ion-list-header {
+    color: #202945;
+    font-weight: 500;
+    font-family: 'Poetsen One';
+    font-size: larger;
+    text-align: center;
+    margin-left: -10px !important;
+}
+
+.tblclass {
+    margin: 0px;
+}
+
+button ion-button{
+    text-transform: none;
+}
+
+.head {
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Poetsen One';
+}
+
+.header {
+    border: 1px solid black;
+    font-size: 12px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.header-r {
+    border: 1px solid black;
+    border-right: 0px !important;
+    font-size: 12px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.header1 {
+    border: 1px solid black;
+    border-top: 0px !important;
+    font-size: 10px;
+    text-align: right;
+    padding-bottom: 13px;
+    text-decoration: underline;
+    background-color: #d5d5d5;
+}
+
+.header-r1 {
+    border: 1px solid black;
+    border-right: 0px !important;
+    border-top: 0px !important;
+    font-size: 10px;
+    text-align: right;
+    padding-bottom: 13px;
+    text-decoration: underline;
+    background-color: #d5d5d5;
+}
+
+ion-item {
+    font-size: 14px;
+}
+
+ion-badge {
+    font-size: 8px;
+    margin-right: 1.5px;
+    margin-bottom: 5px;
+}
+
+.ionactive {
+    background-color: #fff;
+    color: #202945;
+    border: 1px solid black;
+}
+
+.ionactivesuper {
+    background-color: #ffe61b;
+    color: #202945;
+    border: 1px solid black;
+}
+
+.ionactivework {
+    background-color: #ff8c5d;
+    color: #ffe61b;
+    border: 1px solid black;
+}
+
+.ionactivesuperwork {
+    background-color: #ffb44b;
+    color: #202945;
+    border: 1px solid black;
+}

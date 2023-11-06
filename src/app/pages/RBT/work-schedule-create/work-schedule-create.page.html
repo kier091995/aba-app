@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button autoHide="false"></ion-menu-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Work Schedule</ion-label>
+		</ion-list-header>
+
+		<ion-item>
+			<ion-label position="floating">Select Company: </ion-label>
+			<ion-select  [(ngModel)]="company" (ionChange)="optionsFn()">
+				<ion-select-option *ngFor="let x of companies" value="{{x[0]}}" class="req">{{x[1]}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">Select Supervisor: </ion-label>
+			<ion-select  [(ngModel)]="supervisor">
+				<ion-select-option *ngFor="let y of supervisors" value="{{y[0]}}" class="req">{{y[1]}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">From Date: </ion-label>
+			<ion-datetime id="fd" placeholder="Select Date" display-format="YYYY-MM-DD" max="{{maxyr}}" class="req"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">To Date: </ion-label>
+			<ion-datetime id="td" placeholder="Select Date" display-format="YYYY-MM-DD" max="{{maxyr}}" class="req"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">Start Time: </ion-label>
+			<ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="00:00" [(ngModel)]="st" [ngModelOptions]="{standalone: true}" class="req" (ionChange)="timeChange()"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">End Time: </ion-label>
+			<ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="00:00" [(ngModel)]="et" [ngModelOptions]="{standalone: true}" class="req" (ionChange)="timeChange()"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">Note: </ion-label>
+			<ion-textarea id="note" placeholder="Note" class="req"></ion-textarea>
+		</ion-item>
+		
+		<ion-button expand="block" color="secondary" (click)="save()" size="small" id="save" [disabled]="disabledCreateWorkSched">Save</ion-button>
+		
+
+	</ion-list>
+</ion-content>

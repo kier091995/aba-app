@@ -1,0 +1,45 @@
+ion-list-header {
+    color: #202945;
+    font-weight: 500;
+    font-family: 'Poetsen One';
+    font-size: larger;
+    text-align: center;
+    margin-left: -10px !important;
+}
+
+ion-button {
+    text-transform: none;
+    font-family: 'Poetsen One';
+}
+
+ion-col {
+    font-size: 12px;
+    text-align: justify;
+    ion-item {
+        font-size: 12px;
+        text-align: justify;
+    }
+    // p {
+    //     padding: 0px 14px;
+    // }
+}
+
+.head {
+    text-align: center;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: 'Poetsen One';
+}
+
+.header-r {
+    border: 1px solid black;
+    font-size: 14px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.header-r1 {
+    border: 1px solid black;
+    border-top: 0px !important;
+}

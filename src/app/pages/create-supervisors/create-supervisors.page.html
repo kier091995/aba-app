@@ -1,0 +1,41 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()" id="back">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Create a supervisor</ion-label>
+		</ion-list-header>
+
+		<ion-item>
+			<ion-label position="floating">First name <span style="color: red">*</span></ion-label>
+			<ion-input class="requiredsuper" type="text" id="fn" #fn></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Last name <span style="color: red">*</span></ion-label>
+			<ion-input class="requiredsuper" type="text" id="ln" #ln></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Phone number <span style="color: red">*</span></ion-label>
+			<ion-input class="requiredsuper" type="tel" id="pn" #pn maxlength="10"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Email <span style="color: red">*</span></ion-label>
+			<ion-input class="requiredsuper" type="email" id="email" #email></ion-input>
+		</ion-item>
+	</ion-list>
+
+	<!-- <ion-button expand="block" color="secondary" (click)="create()" size="small">Create</ion-button> -->
+	<ion-button expand="block" color="secondary" id="createSupervisor" size="small" (click)="createSupervisor()" [disabled]="disabledCreatesuper">Create</ion-button>
+	
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()" id="back">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Supervision Request Create</ion-label>
+		</ion-list-header>
+	</ion-list>
+	
+	<ion-grid class="tblclass">
+		<ion-row>
+			<ion-col class="head" size="4">Date:</ion-col>
+			<ion-col class="head" size="8">{{thisDay}}</ion-col>
+		</ion-row>
+
+    <ion-row>
+			<ion-col class="head" size="4">Time:</ion-col>
+			<ion-col class="head" size="8">
+				<!-- {{time}} -->
+				<div *ngFor="let x of arrays; index as i">
+					<label *ngIf="arrays[i][0] != 'label'; else label"><input type="checkbox" class="ckboxes" style="width: 24px;height: 20px;" value="{{arrays[i][1]}}">{{arrays[i][1]}}</label>
+
+					<ng-template #label>
+						<label>{{arrays[i][1]}}</label>
+					</ng-template>
+				</div>
+				
+			</ion-col>
+		</ion-row>
+
+    <ion-row>
+			<ion-col class="head" size="4">Company:</ion-col>
+			<ion-col class="head" size="8">{{companyname}}</ion-col>
+		</ion-row>
+
+    <ion-item>
+      <ion-label position="stacked">Note:</ion-label>
+      <ion-textarea [(ngModel)]="note" placeholder="Enter note here..."></ion-textarea>
+    </ion-item>
+
+    <ion-row>
+			<ion-col class="headr" size="12">Are you sure you want to request a schedule on this listed details?</ion-col>
+		</ion-row>
+    
+    <ion-button (click)="submit()" size="small">Submit</ion-button>
+
+
+	</ion-grid>
+</ion-content>

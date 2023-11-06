@@ -1,0 +1,43 @@
+<ion-content class="loginbg">
+	<form class="box">
+	<!-- <form class="box" (submit)="onSubmit(fn.value, ln.value, email.value)"> -->
+		<ion-grid>
+		<ion-row>
+			<ion-col col-6>
+				<div class="divimg">
+				<img class="imgloginlogo" src="/assets/fieldtracking.png">
+				</div>
+			</ion-col>
+		</ion-row>
+		</ion-grid>
+
+		<h1>Register</h1>
+		<select id="role" class="requiredreg">
+			<option value="">Role Category</option>
+			<option value="RBT" data-code="c75bd20cfe2ae235f95f4171455547d921a4b3e2">RBT</option> 
+			<option value="Supervisor" data-code="0f90840f722482888e9da6d7363e28741c24a12f">Supervisor</option>
+		</select>
+		<select id="subtype" style="display: none;">
+			<option>Role subtype</option>
+			<option>BCBA</option>
+			<option>BCaBA Supervisor</option>
+			<option>BCBA Compliance Coordinator</option>
+			<option>BCaBA Compliance Coordinator</option>
+		</select>
+		<input type="text" id="fn" class="requiredreg" placeholder="First name">
+		<input type="text" id="ln" class="requiredreg" placeholder="Last name">
+		<input type="text" id="email" class="requiredreg email" placeholder="Email">
+		<input type="tel" id="phone" class="requiredreg phone" placeholder="Phone #" maxlength="10">
+		<input type="button" id="register" value="Register"> <br>
+		
+		<ion-col col-6 class="padbot">
+		<a (click)="openLogin()" class="forgotbtn" id="login">Login</a> <br>
+		</ion-col>
+		|
+		<ion-col col-6 class="padbot">
+		<a (click)="openForgotPassword()" class="forgotbtn">Forgot Password?</a>
+		</ion-col>
+		
+
+	</form>
+</ion-content>

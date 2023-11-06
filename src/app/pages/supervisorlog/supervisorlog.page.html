@@ -1,0 +1,234 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()" id="back">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Supervisor Log</ion-label>
+		</ion-list-header>
+	</ion-list>
+	<form (ngSubmit)="confirm()" *ngIf="type == 'create'; else thisElse">
+		<ion-grid>
+			<ion-row>
+				<ion-col class="headeruna" size="12">Supervision Type</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1" size="12">
+					<select id="stype" class="req">
+						<option></option>
+						<option>Individual</option>
+						<option>Group</option>
+					</select>
+				</ion-col>
+			</ion-row>		
+
+			<ion-row>
+				<ion-col class="header-r" size="6">RBT</ion-col>
+				<ion-col class="header" size="6">Company</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="header-r12" size="6">{{rbt}}</ion-col>
+				<ion-col class="header12" size="6">{{company}}</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col class="header-r" size="4">Date</ion-col>
+				<ion-col class="header-r" size="3">Start Time</ion-col>
+				<ion-col class="header-r" size="3">End Time</ion-col>
+				<ion-col class="header" size="2">Hours</ion-col>
+			</ion-row>
+			
+			<ion-row>
+				<ion-col class="header-r1" size="4">{{date}}</ion-col>
+				<ion-col class="header-r1" size="3" id="stime"></ion-col>
+				<ion-col class="header-r1" size="3" id="etime"></ion-col>
+				<ion-col class="header1" size="2" id="hours"></ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="header-r" size="6">Unrestricted Hours</ion-col>
+				<ion-col class="header" size="6">Restricted Hours</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="header-r12" size="6">
+					<input type="number" id="unr" (keyup)="unrestrict()">
+				</ion-col>
+				<input type="hidden" id="totalx">
+				<ion-col class="header12" size="6" id="total"></ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col class="headeruna" size="12">Method of Supervision</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1" size="12">
+					<select id="ms" class="req">
+						<option></option>
+						<option>No Supervision Session</option>
+						<option>Face-to-face</option>
+						<option>Video Conferencing</option>
+						<option>Telephone</option>
+					</select>
+				</ion-col>
+			</ion-row>		
+
+			<ion-row>
+				<ion-col class="headerth" size="4">Supervision Start Time</ion-col>
+				<ion-col class="headerth" size="4">Supervision End Time</ion-col>
+				<ion-col class="headerthx" size="4">Total Supervision Hours</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headerxx" size="4">
+					<ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="00:00" [(ngModel)]="sups"  (ionChange)="suptime()" [ngModelOptions]="{standalone: true}"></ion-datetime>
+				</ion-col>
+				<ion-col class="headerxx" size="4">
+					<ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="00:00" [(ngModel)]="supe"  (ionChange)="suptime()" [ngModelOptions]="{standalone: true}"></ion-datetime>
+				</ion-col>
+				<ion-col class="headerxxx" size="4" id="totalsup">0</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna" size="12">Client Observation</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1" size="12">
+					<select id="co">
+						<option></option>
+						<option>Yes</option>
+						<option>No</option>
+					</select>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna" size="12">Note</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1x" size="12">
+					<textarea id="note" cols="20" rows="10"></textarea>
+				</ion-col>
+			</ion-row>
+
+		</ion-grid>
+
+		<ion-item style="display: none;" id="ckboxsign">
+			<ion-checkbox color="dark" slot="start" (ionChange)="checkSign($event)"></ion-checkbox>
+			<ion-label>Use my existing signature</ion-label>
+		</ion-item>
+
+		<ion-button button color="secondary" expand="block" type="submit" id="btnSave" style="display: none" [disabled]="disablesuplog">Save</ion-button>
+	</form>
+
+	<ng-template #thisElse>
+		<ion-grid>
+			<ion-row>
+				<ion-col class="headeruna" size="12">Supervision Type</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1" size="12">{{visor.supertype}}</ion-col>
+			</ion-row>		
+
+			<ion-row>
+				<ion-col class="header-r" size="6">RBT</ion-col>
+				<ion-col class="header" size="6">Company</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="header-r12" size="6">{{rbt}}</ion-col>
+				<ion-col class="header12" size="6">{{company}}</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col class="header-r" size="4">Date</ion-col>
+				<ion-col class="header-r" size="3">Start Time</ion-col>
+				<ion-col class="header-r" size="3">End Time</ion-col>
+				<ion-col class="header" size="2">Hours</ion-col>
+			</ion-row>
+			
+			<ion-row>
+				<ion-col class="header-r1" size="4">{{date}}</ion-col>
+				<ion-col class="header-r1" size="3" id="stime">{{own.stime}}</ion-col>
+				<ion-col class="header-r1" size="3" id="etime">{{own.etime}}</ion-col>
+				<ion-col class="header1" size="2" id="hoursv">{{own.hours}}</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="header-r" size="6">Unrestricted Hours</ion-col>
+				<ion-col class="header" size="6">Restricted Hours</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="header-r12" size="6">
+					{{visor.unrestricted}}
+				</ion-col>
+				<ion-col class="header12" size="6" id="totalv"></ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col class="headeruna" size="12">Method of Supervision</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1" size="12">{{visor.method}}</ion-col>
+			</ion-row>		
+
+			<ion-row>
+				<ion-col class="headerth" size="4">Supervision Start Time</ion-col>
+				<ion-col class="headerth" size="4">Supervision End Time</ion-col>
+				<ion-col class="headerthx" size="4">Total Supervision Hours</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headerxx" size="4">{{visor.supertimes}}</ion-col>
+				<ion-col class="headerxx" size="4">{{visor.supertimee}}</ion-col>
+				<ion-col class="headerxxx" size="4" id="totalsup">{{visor.total}}</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna" size="12">Client Observation</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1" size="12">{{visor.observation}}</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna" size="12">Note</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="headeruna1x" size="12">{{visor.note}}</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ng-template>
+
+</ion-content>

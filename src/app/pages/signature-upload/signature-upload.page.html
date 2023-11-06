@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()" id="back">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	
+  	<ion-card>
+		<div clas="file_input_wrap">
+			<input type="file" class="hide" accept="image/*" id="signature" (change)="signChange($event)" hidden="true">
+			<label for="signature" class="btn btn-large"><ion-icon name="image"></ion-icon> Upload a signaure</label>
+		</div>
+
+		<img id="output" src="" height="150" width="250"/>
+	</ion-card>
+
+	<ion-button expand="block" color="secondary" id="saveSignature" size="small" (click)="saveSignature()" [disabled]="disabledUploadsign">Save</ion-button>
+</ion-content>

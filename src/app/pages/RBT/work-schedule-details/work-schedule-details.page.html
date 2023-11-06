@@ -1,0 +1,86 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-list>
+		<ion-list-header>
+			<ion-label>{{title}}</ion-label>
+		</ion-list-header>
+	</ion-list>
+	
+	<ion-grid class="tblclass">
+		<ion-row>
+			<ion-col class="head" size="3">Date:</ion-col>
+			<ion-col class="head" size="9">{{thisDay}}</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col class="header-r" size="12">Details</ion-col>
+		</ion-row>
+		
+		<div *ngFor="let arr of arrData; index as i">
+			<div *ngIf="type == 'supervision'; else work">
+				<ion-grid class="gridstyle">
+					<ion-row>
+						<ion-col size="4">Supervisor:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][0]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Company:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][1]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Time:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][2]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Note:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][3]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Status:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][4]}}</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+
+			<ng-template #work>
+				<ion-grid class="gridstyle">
+					<ion-row>
+						<ion-col size="4">Supervisor:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][0]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Company:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][1]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Time:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][2]}}</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="4">Note:</ion-col>
+						<ion-col size="8" text-wrap>{{arrData[i][3]}}</ion-col>
+					</ion-row>
+					<ion-button size="small" (click)="openModal(arrData[i][5], arrData[i][6])">{{arrData[i][4]}}</ion-button>
+				</ion-grid>
+			</ng-template>
+		</div>
+
+
+	</ion-grid>
+</ion-content>

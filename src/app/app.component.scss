@@ -1,0 +1,35 @@
+ion-list-header {
+	font-size: 20px;
+	font-size: 22px;
+    padding: 26px;
+}
+
+#sidenav {
+	font-size: 18px;
+	ion-item {
+		--border-color: #cdcdcd;
+	}
+	ion-list{
+		padding: 0px !important;
+	}
+}
+
+.headTitle{
+	text-align: center;
+}
+
+.active {
+	--ion-text-color: orange;
+}
+
+.active-parent {
+	font-weight: 500;
+}
+
+.sub-item {
+	padding: 0px !important;
+    // margin-left: -10px !important;
+	font-size: small;
+	--background: #e5e2e2;
+	--border-color: #2e2e2e!important;
+}

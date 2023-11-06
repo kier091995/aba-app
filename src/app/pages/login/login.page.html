@@ -1,0 +1,27 @@
+<ion-content class="loginbg">
+	<div class="box">
+		<ion-grid>
+			<ion-row>
+			<ion-col col-6>
+				<div class="divimg">
+				<img class="imgloginlogo" src="/assets/fieldtracking.png">
+				</div>
+			</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<h1>Login</h1>
+		<form (ngSubmit)="login(user.value, pass.value)">
+			<input type="text" #user class="required" placeholder="Email">
+			<input type="password" #pass class="required" placeholder="Password">
+			<input type="submit" value="Login"> <br>
+		</form>
+		<ion-col col-6>
+			<a (click)="openRegister()" class="forgotbtn">Register</a>
+		</ion-col>
+		|
+		<ion-col col-6>
+			<a (click)="openForgotPassword()" class="forgotbtn">Forgot Password?</a>
+		</ion-col>
+	</div>  
+</ion-content>

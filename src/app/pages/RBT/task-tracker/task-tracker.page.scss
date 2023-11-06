@@ -1,0 +1,103 @@
+ion-content{
+    background-color: white;
+}
+
+ion-list-header {
+    color: #202945;
+    font-weight: 500;
+    font-family: 'Poetsen One';
+    font-size: larger;
+    text-align: center;
+    margin-left: -10px !important;
+}
+
+ion-button {
+    text-transform: none;
+    font-family: 'Poetsen One';
+}
+
+ion-col {
+    font-size: 12px;
+    text-align: justify;
+    ion-item {
+        font-size: 12px;
+        text-align: justify;
+    }
+}
+
+.head {
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: 'Poetsen One';
+}
+
+.headlist {
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: 'Poetsen One';
+    border-color: black; 
+    border-width: .01em; 
+    border-style:solid; margin-bottom : -1px;
+    background-color: #ffb444;
+}
+
+.datalist {
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    border-color: black; 
+    border-width: .01em; 
+    border-style:solid; margin-bottom : -1px;
+    background-color: white;
+}
+
+ion-label {
+    .labelclass {
+        font-size: 12px !important;
+    }
+}
+select {
+    width: 100%;
+    font-size: 13px;
+}
+
+
+ion-datetime, ion-select, ion-textarea {
+    border-bottom: 1px solid black !important;
+}
+
+.left {
+    width: 40%;
+}
+
+.mid {
+    width: 60%;
+}
+
+.right {
+    width: 20%;
+}
+
+.time {
+    font-size: 10px;
+    width: 100%;
+}
+
+.csscomment{
+    width: 100%;
+    font-size:12px;
+    background-color: #fff;
+    color: black;
+}
+
+option {
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+}
+
+input, select {
+    background-color: #fff;
+    color: black;
+}

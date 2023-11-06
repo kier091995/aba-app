@@ -1,0 +1,63 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button autoHide="false"></ion-menu-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Supervision Request</ion-label>
+		</ion-list-header>
+		<ion-item>
+			<ion-label position="floating">Select year and month: </ion-label>
+			<ion-datetime display-format="MMMM-YYYY" min="{{min}}" max="{{max}}" [(ngModel)]="ym" (ionChange)="optionsFn()"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">Select supervisor: </ion-label>
+			<ion-select  [(ngModel)]="supervisor" (ionChange)="optionsFn()">
+				<ion-select-option *ngFor="let x of visor" value="{{x[1]}}">{{x[0]}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+	</ion-list>
+
+	<ion-grid class="tblclass" id="tblData" style="display: none;">
+		<ion-row>
+			<ion-col class="head" size="12">{{yrmonth}}</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-badge class="ionactive">Active</ion-badge>
+			<ion-badge class="ionactivesuper">Supervision</ion-badge>
+			<ion-badge class="ionactivework">Work Sched</ion-badge>
+			<ion-badge class="ionactivesuperwork">Supervision & Work Sched</ion-badge>
+		</ion-row>
+		
+		<ion-row>
+			<ion-col class="header-r" size="1.7">Sun</ion-col>
+			<ion-col class="header-r" size="1.7">Mon</ion-col>
+			<ion-col class="header-r" size="1.7">Tue</ion-col>
+			<ion-col class="header-r" size="1.7">Wed</ion-col>
+			<ion-col class="header-r" size="1.7">Thu</ion-col>
+			<ion-col class="header-r" size="1.7">Fri</ion-col>
+			<ion-col class="header" size="1.7">Sat</ion-col>
+		</ion-row>
+		<ion-row *ngFor="let t of tr; index as i">
+			<ion-col button (click)="openModal(t[0], sched[i][0])" class="header-r1 ion{{arrColor[i][0]}}" size="1.7">{{ t[0] }}</ion-col>
+			<ion-col button (click)="openModal(t[1], sched[i][1])" class="header-r1 ion{{arrColor[i][1]}}" size="1.7">{{ t[1] }}</ion-col>
+			<ion-col button (click)="openModal(t[2], sched[i][2])" class="header-r1 ion{{arrColor[i][2]}}" size="1.7">{{ t[2] }}</ion-col>
+			<ion-col button (click)="openModal(t[3], sched[i][3])" class="header-r1 ion{{arrColor[i][3]}}" size="1.7">{{ t[3] }}</ion-col>
+			<ion-col button (click)="openModal(t[4], sched[i][4])" class="header-r1 ion{{arrColor[i][4]}}" size="1.7">{{ t[4] }}</ion-col>
+			<ion-col button (click)="openModal(t[5], sched[i][5])" class="header-r1 ion{{arrColor[i][5]}}" size="1.7">{{ t[5] }}</ion-col>
+			<ion-col button (click)="openModal(t[6], sched[i][6])" class="header1 ion{{arrColor[i][6]}}" size="1.7">{{ t[6] }}</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

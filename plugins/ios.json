@@ -1,0 +1,39 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.agsi.RBTComplianceTracker"
+    }
+  },
+  "dependent_plugins": {}
+}

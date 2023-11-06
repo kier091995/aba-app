@@ -1,0 +1,103 @@
+<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Edit profile</ion-label>
+		</ion-list-header>
+
+		<ion-item>
+			<ion-label position="floating">First Name</ion-label>
+			<ion-input id="fn"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Middle Name</ion-label>
+			<ion-input id="mn"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Last Name</ion-label>
+			<ion-input id="ln"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Phone</ion-label>
+			<ion-input type="tel" id="phone" maxlength="10"></ion-input>
+		</ion-item>
+
+		<!-- address -->
+		<ion-item>
+			<ion-label position="floating">Address Line 1</ion-label>
+			<ion-input id="add1"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Address Line 2</ion-label>
+			<ion-input id="add2"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">City</ion-label>
+			<ion-input id="city"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">State</ion-label>
+			<ion-input id="state"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Zipcode</ion-label>
+			<ion-input id="zip"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">{{stype}} No.</ion-label>
+			<ion-input id="supid"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label position="floating">Certification Date</ion-label>
+			<ion-datetime id="certdate" placeholder="Select Date" max="{{maxyr}}" display-format="YYYY-MM-DD"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Re-certification Date</ion-label>
+			<ion-datetime id="recertdate" placeholder="Select Date" max="{{maxyr}}" display-format="YYYY-MM-DD"></ion-datetime>
+		</ion-item>
+
+		<!-- for visor -->
+		<div *ngIf="type == 'Supervisors'">
+			
+			<ion-item>
+				<ion-label position="floating">Certification No</ion-label>
+				<ion-input id="cert"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Qualification</ion-label>
+				<ion-input id="quali"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Date Qualified to Supervise</ion-label>
+				<!-- <ion-input type="date" id="dquali"></ion-input> -->
+				<ion-datetime id="dquali" placeholder="Select Date" max="{{maxyr}}" display-format="YYYY-MM-DD"></ion-datetime>
+			</ion-item>
+			<ion-item>
+				<ion-label position="floating">Date Supervision Contract</ion-label>
+				<!-- <ion-input type="date" id="dsuper"></ion-input> -->
+				<ion-datetime id="dsuper" placeholder="Select Date" max="{{maxyr}}" display-format="YYYY-MM-DD"></ion-datetime>
+			</ion-item>
+		</div>
+
+	</ion-list>
+
+	<ion-button expand="block" color="secondary" (click)="update()" size="small">Save</ion-button>
+	
+</ion-content>

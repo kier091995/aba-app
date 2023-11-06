@@ -1,0 +1,112 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-list>
+		<ion-list-header>
+			<ion-label>{{title}}</ion-label>
+		</ion-list-header>
+	</ion-list>
+	
+	<ion-grid class="tblclass">
+		<ion-row>
+			<ion-col class="head" size="3">Date:</ion-col>
+			<ion-col class="head" size="9">{{thisDay}}</ion-col>
+		</ion-row>
+		<ion-row *ngIf="time != 'x'">
+			<ion-col class="head" size="3">Time:</ion-col>
+			<ion-col class="head" size="9">{{time}}</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col class="header-r" size="12">Details</ion-col>
+		</ion-row>
+		
+		<ion-row *ngFor="let arr of arrData; index as i">
+			<ion-col class="header-r1" size="12" *ngIf="time != 'x'; else notime" >
+				<button id="getDataSched" (click)="getData('')"></button>
+				<ion-item>
+					<p>
+						<strong>{{arrData[i][2]}}</strong> wants you to supervise
+						his/her work at <strong>{{arrData[i][3]}} at {{arrData[i][4]}} </strong>
+					</p>
+				</ion-item>
+				<ng-container *ngIf="arrData[i][0] != '';else thiselse">
+					<form (ngSubmit)="approve(sel.value, hdncode.value)">
+						<ion-item>
+							<ion-label>Note:</ion-label>
+							<ion-input value="{{arrData[i][5]}}" readonly></ion-input>
+						</ion-item>
+						<input type="hidden" #hdncode value="{{arrData[i][0]}}">
+						<ion-item>
+							<ion-label>Sched Type:</ion-label>
+							<ion-select #sel>
+								<ion-select-option *ngFor="let x of arrData[i][1]" value="{{x}}">{{x}}</ion-select-option>
+							</ion-select>
+						</ion-item>
+						<ion-button button color="secondary" size="small" type="submit" expand="block">Approve</ion-button>
+					</form>
+					
+					<ion-button button color="danger" size="small" expand="block" id="reject" class="{{arrData[i][0]}}">Reject</ion-button>
+				</ng-container>
+
+				<ng-template #thiselse>
+					<ion-item>
+						<ion-label>Note:</ion-label>
+						<ion-input value="{{arrData[i][5]}}" readonly></ion-input>
+					</ion-item>
+					
+					<ion-item>
+						<ion-label>Status:</ion-label>
+						<ion-input value="{{arrData[i][6]}}" readonly></ion-input>
+					</ion-item>
+
+					<ion-item>
+						<ion-label>Sched Type:</ion-label>
+						<ion-input *ngFor="let x of arrData[i][1]" value="{{x}}" readonly></ion-input>
+					</ion-item>
+				</ng-template>
+
+
+			</ion-col>
+
+			<ng-template #notime>
+				<ion-col class="header-r1">
+					<ion-item>
+						<ion-label position="stacked">RBT:</ion-label>
+						<ion-input value="{{arrData[i][0]}}" readonly></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="stacked">Company:</ion-label>
+						<ion-input value="{{arrData[i][1]}}" readonly></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="stacked">Time:</ion-label>
+						<ion-input value="{{arrData[i][2]}}" readonly></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="stacked">Note:</ion-label>
+						<p>{{arrData[i][3]}}</p>
+						<ion-button size="small" (click)="log(arrData[i][5], arrData[i][6])">{{arrData[i][4]}}</ion-button>
+					</ion-item>					
+				</ion-col>
+			</ng-template>
+		</ion-row>
+
+
+	</ion-grid>
+</ion-content>

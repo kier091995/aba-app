@@ -1,0 +1,161 @@
+@font-face {
+	font-family: 'Poetsen One';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(/assets/fonts/PoetsenOne-Regular.ttf);
+}
+
+ion-list-header {
+    color: #202945;
+    font-weight: 500;
+    font-family: 'Poetsen One';
+    font-size: larger;
+    text-align: center;
+    margin-left: -10px !important;
+    // margin-bottom: -18px;
+}
+
+ion-button {
+    text-transform: none;
+    font-family: 'Poetsen One';
+}
+
+ion-item {
+    font-size: 11px;
+}
+
+
+.header {
+    border: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.headerx {
+    border: 1px solid black;
+    border-left: 0px !important;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.headeruna {
+    border: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.headerunax {
+    border: 1px solid black;
+    border-top: 0px;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.headeruna1 {
+    border: 1px solid black;
+    border-top: 0px;
+    border-bottom: 0px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.headeruna1x {
+    border: 1px solid black;
+    border-top: 0px;
+    font-size: 11px;
+    text-align: center;
+}
+
+
+
+
+.header-r {
+    border: 1px solid black;
+    border-right: 0px !important;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.header1 {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+}
+
+.header-r1 {
+    border-left: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+}
+
+.header12 {
+    border: 1px solid black;
+    border-top: 0px !important;
+    font-size: 11px;
+    text-align: center;
+}
+
+.header12x {
+    border: 1px solid black;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    font-size: 11px;
+    text-align: center;
+}
+
+.header-r12 {
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+}
+
+.headerth {
+    border: 1px solid black;
+    border-right: 0px !important;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+.headerthx {
+    border: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+    background-color: #ffb444;
+    font-family: 'Poetsen One';
+}
+
+.headerxx {
+    border-left: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+}
+.headerxxx {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    font-size: 11px;
+    text-align: center;
+}
+
+input, select, textarea {
+    width: 100%;
+    background-color: #ffff;
+    border-radius: 5px;
+}
+
+ion-datetime {
+    border-bottom: 1px solid black;
+}

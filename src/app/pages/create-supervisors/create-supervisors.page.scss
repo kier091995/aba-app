@@ -1,0 +1,22 @@
+ion-list-header {
+    color: #202945;
+    font-weight: 500;
+    font-family: 'Poetsen One';
+    font-size: larger;
+    text-align: center;
+    margin-left: -10px !important;
+}
+
+.input-dngr {
+    --border-color: var(--ion-color-danger, #f1453d) !important;
+}
+
+ion-button {
+    text-transform: none;
+    font-family: 'Poetsen One';
+}
+
+ion-item {
+    font-size: 12px;
+    --min-height: 10px;
+}

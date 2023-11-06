@@ -1,0 +1,50 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-list>
+		<ion-list-header>
+			<ion-label>Supervision Request</ion-label>
+		</ion-list-header>
+	</ion-list>
+	
+	<ion-grid class="tblclass">
+		<ion-row>
+			<ion-col class="head" size="3">Date:</ion-col>
+			<ion-col class="head" size="9">{{thisDay}}</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col class="heading" size="4">Company Name</ion-col>
+			<ion-col class="heading" size="4.5">Time</ion-col>
+			<ion-col class="heading" size="3.5">Availability</ion-col>
+		</ion-row>
+		
+		<ion-grid class="gridstyle" *ngFor="let x of arr; index as i">
+			<ion-row>
+				<ion-col class="bodies" size="4">{{arr[i][0]}}</ion-col>
+				<ion-col class="bodies" size="4.5">{{arr[i][1]}}</ion-col>
+				<ion-col class="bodies" size="3.5">
+						<!-- <ion-button (click)="presentActionSheet(i);" color="primary" size="small">Open</ion-button> -->
+						<ion-button (click)="openModal(arr[i][3], thisDay, i);" color="primary" size="small">Open</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+
+	</ion-grid>
+</ion-content>

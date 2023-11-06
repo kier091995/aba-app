@@ -1,0 +1,22 @@
+.padtop {
+    padding-top: 24px;
+}
+
+ion-button {
+    text-transform: none;
+    font-family: 'Poetsen One';
+}
+
+ion-list-header {
+    color: #202945;
+    font-weight: 500;
+    font-family: 'Poetsen One';
+    font-size: larger;
+    text-align: center;
+    margin-left: -10px !important;
+}
+
+ion-item {
+    font-size: 12px;
+    --min-height: 10px;
+}

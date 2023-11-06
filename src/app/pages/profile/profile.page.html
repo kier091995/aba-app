@@ -1,0 +1,167 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button autoHide="false"></ion-menu-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+	<div class="padtop"></div>
+
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-card>
+		<div class="divimg">      
+			<img class="imgprofile" src="assets/profilelogo.png"/>
+		</div>
+		<div class="divname">
+			<ion-card-title class="name">{{name}}</ion-card-title>
+			{{type}}
+		</div>
+		<hr>
+		
+
+		
+		<div class="divbtns">
+			<ion-button size="small" color="primary" (click)="updatePass()">Update Password</ion-button>
+			<ion-button size="small" color="primary" (click)="deleteacc()">Delete my account</ion-button>
+
+			<div *ngIf="type == 'RBT'">
+				<ion-button size="small" color="primary" (click)="createCompany()" id="btncompany">Create Company</ion-button>
+				<ion-button size="small" color="primary" (click)="createVisor()">Create Supervisor</ion-button>
+				<ion-button size="small" color="primary" (click)="attachSuper()">Attach a Supervisor</ion-button>
+			</div>
+			<ion-button size="small" color="primary" (click)="attachCompany()">Attach to a company</ion-button>
+			<ion-button size="small" color="primary" (click)="signature()">Upload a signature</ion-button>
+		</div>
+	</ion-card>
+	
+	<!-- details -->
+	<ion-card class="details">
+		<ion-list>
+			<ion-list-header>
+				<ion-label>My Details</ion-label>
+				<ion-button (click)="editProfile()">
+					<ion-icon color="secondary" name="create-outline"></ion-icon>
+				</ion-button>
+			</ion-list-header>
+
+			<ion-item class="ion-no-padding">
+				<ion-icon name="at-outline"></ion-icon>
+				<ion-label class="dts" class="ion-text-wrap">{{email}}</ion-label>
+			</ion-item>
+
+			<ion-item class="ion-no-padding">
+				<ion-icon name="call-outline"></ion-icon>
+				<ion-label class="dts" class="ion-text-wrap">{{contact}}</ion-label>
+			</ion-item>
+			
+			<ion-item class="ion-no-padding">
+				<ion-icon name="home-outline" class="topicon"></ion-icon>
+				<ion-label class="dts" class="ion-text-wrap">
+					{{address}} <br>
+					{{address1}} <br>
+					{{city}} <br>
+					{{state}} <br>
+					{{zipcode}} <br>
+				</ion-label>
+			</ion-item>
+			
+
+			<ion-item>
+				<ion-label position="stacked">{{stype}} No.:</ion-label>
+				<ion-input value="{{supid}}" readonly></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Certification Date:</ion-label>
+				<ion-input value="{{certdate}}" readonly></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Re-certification Date:</ion-label>
+				<ion-input value="{{recertdate}}" readonly></ion-input>
+			</ion-item>
+			
+			<div *ngIf="type == 'Supervisors'">
+				<ion-item>
+					<ion-label position="stacked">Certification No:</ion-label>
+					<ion-input value="{{cert}}" readonly></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label position="stacked">Qualification:</ion-label>
+					<ion-input value="{{quali}}" readonly></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Date Qualified to Supervise:</ion-label>
+					<ion-input value="{{dquali}}" readonly></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Date Supervision Contract:</ion-label>
+					<ion-input value="{{dsuper}}" readonly></ion-input>
+				</ion-item>
+			</div>
+			
+		</ion-list>
+	</ion-card>
+
+	<!-- company -->
+	<ion-card class="details">
+		<ion-list>
+			<ion-list-header>
+				<ion-label>Attached Company</ion-label>
+			</ion-list-header>
+
+			<div *ngIf="comlng == 0; else conditionCompFalse">
+				<ion-item class="ion-no-padding">
+					<ion-icon name="alert-circle-outline"></ion-icon>
+					<ion-label class="dts" class="ion-text-wrap">No data available..</ion-label>
+				</ion-item>
+			</div>
+
+			<ng-template #conditionCompFalse>
+				<div *ngFor="let res of companies; let i = index">
+					<ion-item class="ion-no-padding">
+						<ion-icon *ngIf="utype == 'RBT'" button  color="danger" (click)="presentRemove(companycodes[i])" name="remove-circle-outline" style="color: #fff;"></ion-icon>
+						<ion-label class="dts" class="ion-text-wrap"><ion-icon name="briefcase-outline"></ion-icon>{{companies[i]}}</ion-label>
+					</ion-item>
+				</div>
+			</ng-template>			
+		</ion-list>    
+	</ion-card>
+
+	<!-- supervisors -->
+	<ion-card *ngIf="type == 'RBT'">
+		<ion-list>
+			<ion-list-header>
+				<ion-label>Attached Supervisors</ion-label>
+			</ion-list-header>
+
+			<div *ngIf="suplng == 0; else conditionFalse">
+				<ion-item class="ion-no-padding">
+					<ion-icon name="alert-circle-outline"></ion-icon>
+					<ion-label class="dts" class="ion-text-wrap">No data available..</ion-label>
+				</ion-item>
+			</div>
+			
+			<ng-template #conditionFalse>
+				<div *ngFor="let res of supervisors; let s = index">
+					<ion-item class="ion-no-padding">
+						<ion-icon name="person-outline"></ion-icon>
+						<ion-label class="dts" class="ion-text-wrap">{{supervisors[s]}}</ion-label>
+					</ion-item>
+				</div>
+			</ng-template>
+			
+		</ion-list>    
+	</ion-card>  
+
+	<!-- <ion-card>
+		<input type="file" accept="image/*" id="signature" (change)="signChange(event)">
+		<img id="output" src=""/>
+		
+	</ion-card> -->
+</ion-content>

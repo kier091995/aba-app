@@ -1,0 +1,87 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()" id="back">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-list-header>
+			<ion-label>RBT Task Log</ion-label>
+		</ion-list-header>
+	</ion-list>
+	
+	<ion-grid class="tblclass">
+		<ion-row>
+			<ion-col class="head" size="7">Registered Behavior Technician :</ion-col>
+			<ion-col class="head" size="5">{{name}}</ion-col>
+			<input type="hidden" class="newcode" value="{{newcode}}">
+			<input type="hidden" class="supervisorcode" value="{{supervisorcode}}">
+			<input type="hidden" class="stime" value="{{stime}}">
+			<input type="hidden" class="etime" value="{{etime}}">
+		</ion-row>
+		<ion-row>
+			<ion-col class="head" size="7">Supervisor :</ion-col>
+			<ion-col class="head" size="5" class="visor">{{visor}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="head" size="7">Date of Supervision :</ion-col>
+			<ion-col class="head date" size="5" class="date">{{date}}</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col class="headlist" size="4">Shift Schedule (Duration)
+				<ion-button size="small" color="primary" id="btnappend" (click)="btnappend()" *ngIf="type == 'create'"><ion-icon name="add-outline"  shape="round" fill="outline"></ion-icon></ion-button>
+			</ion-col>
+			<ion-col class="headlist" size="6">Behavior-Analytic Services Implemented During Shift</ion-col>
+			<ion-col class="headlist" size="2">Total Time</ion-col>
+		</ion-row>
+
+
+		<div id="divappend" *ngIf="type == 'create'">
+			<ion-row id="rowappend">
+				<ion-col class="datalist" size="4">
+					<ion-button button id="remove" class="btnRemove" color="danger" size="small"><ion-icon name="remove-circle-outline" style="color: #fff;"></ion-icon></ion-button> <br>
+					<!-- <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="00:00" [(ngModel)]="et" [ngModelOptions]="{standalone: true}" class="req" min="06:00"></ion-datetime> -->
+					<input type="time" min='00:00' max= '24:00' class="time req" attr="total1">
+				</ion-col>
+				<ion-col class="datalist" size="6">			
+					<!-- <ion-label position="stacked" class="labelclass">Service Type: </ion-label> -->
+					<label>Service Type:</label>
+					<select class="stype pt1 req" attr="pt1"></select>
+					
+					<!-- <ion-label position="stacked" class="labelclass">Service Subtype: </ion-label> -->
+					<label>Service Subtype: </label>
+					<select class="sub subpt1"></select>
+
+					<label>Comment:</label>
+					<!-- <ion-textarea class="csscomment"></ion-textarea> -->
+					<textarea class="csscomment comment" cols="30" rows="10"></textarea>
+				</ion-col>
+				<ion-col class="datalist" size="2">
+					<label class="total total1"></label>
+				</ion-col>
+			</ion-row>
+		</div>
+
+		<div id="x"></div>
+
+		<ion-row>
+			<ion-col class="headlist" size="10">
+				Total Amount of BCBA Supervision Required <br>
+				(5% of total hours implementing behavior-analytic services)
+			</ion-col>
+			<ion-col class="datalist" size="2">
+				<label class="finaltotal"></label>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-button id="save" color="secondary" size="small" expand="block" *ngIf="type == 'create'" [disabled]="diabledTaskLog">Save</ion-button>
+</ion-content>

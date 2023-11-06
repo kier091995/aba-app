@@ -1,0 +1,86 @@
+ion-card, ion-button {
+    font-family: "Poetsen One" !important;
+    text-transform: none !important;
+}
+.imgprofile{
+    height: 110px;
+    justify-content: center;
+    padding: 3px;
+    border: 2px solid #ffb444;
+    border-radius: 58px;
+}
+
+.divimg { 
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.name {
+    color: #ffb444 !important;
+    font-size: 22px;
+    padding-top: 10px;
+}
+
+.divname {
+    text-align: center;
+}
+
+hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 0;
+    border-top: 1px solid #202945;
+}
+
+ion-icon {
+    color: black;
+}
+
+#editprofile {
+    float: right;
+    color: #ffffff;
+}
+
+.divbtns {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+ion-list-header{
+    color:#ffb444;
+    background-color: #202945;
+    font-size: 16px !important;
+    margin-top: -10px !important;
+    vertical-align: middle !important;
+    // padding-bottom: 10px !important;
+}
+
+
+ion-icon {
+    padding: 0px 8px !important;
+}
+
+ion-card-header{
+    background-color: #ffb444;
+    color: #ffffff;
+}
+
+ion-header{
+    ion-toolbar, ion-item{
+        --background: #ffffff;
+    }
+}
+
+.topicon {
+    margin-top: -55px !important;
+}
+
+ion-item {
+    font-size: 12px;
+    --min-height: 10px;
+    ion-icon {
+        font-size: 20px;
+    }
+}

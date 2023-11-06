@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="backButton()">
+				<ion-icon name="chevron-back-outline" class="return">
+				</ion-icon>
+				<ion-label>Back</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher> -->
+
+	<ion-list>
+		<ion-list-header>
+			<ion-label>{{headertitle}}</ion-label>
+		</ion-list-header>
+	</ion-list>
+
+	
+	<ion-grid class="tblclass">
+		<ion-row>
+			<ion-col class="head" size="12">{{thisDay}}</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col class="header-r" size="5">Time</ion-col>
+			<ion-col class="header-r" size="4">Availability</ion-col>
+			<ion-col class="header" size="3">Action</ion-col>
+		</ion-row>
+		
+		<ion-row *ngFor="let t of timeData; index as i">
+			<ion-col class="header-r1" size="5">{{time1[i]}} to {{time2[i]}}</ion-col>
+
+			<ion-col class="header-r1" size="4" *ngIf="exist[i] == 0; else existElse">
+				<ion-checkbox class="ckbox" [ngModel]="timeData[i]" value="{{time1[i]}} to {{time2[i]}}"></ion-checkbox>
+			</ion-col>
+
+			<ng-template #existElse>
+				<ion-col class="header-r1" size="4">
+					<ion-checkbox class="ckbox" [ngModel]="timeData[i]" value="{{time1[i]}} to {{time2[i]}}" disabled="true"></ion-checkbox>
+				</ion-col>
+			</ng-template>
+
+
+			<ion-col class="header1" size="3">
+				<ion-button size="small" *ngIf="schedTime[i] != ''" (click)="actionSheet(schedTime[i])"><ion-icon name="eye-outline"></ion-icon></ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-button expand="block" color="secondary" (click)="presentAlertConfirm()" [disabled]="disabledSaveBCBA">Save</ion-button>
+
+</ion-content>
+
